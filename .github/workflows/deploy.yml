@@ -27,7 +27,10 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
+          port: 22
           script: |
             cd /home/ec2-user/simple-app
+            # Убиваем старое приложение, если есть
             pkill -f app.py || true
-            sudo python3 app.py &
+            # Запускаем в фоне через nohup
+            nohup sudo python3 app.py > app.log 2>&1 &
