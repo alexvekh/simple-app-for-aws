@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 # Подключение к RDS
 db = mysql.connector.connect(
-    host==os.environ.get("DB_HOST"),
+    host=os.environ.get("DB_HOST"),
     user=os.environ.get("DB_USER"),
     password=os.environ.get("DB_PASSWORD"),
     database="simple_app"
