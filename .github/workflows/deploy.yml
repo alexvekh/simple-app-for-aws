@@ -30,7 +30,6 @@ jobs:
           port: 22
           script: |
             cd /home/ec2-user/simple-app
-            # Убиваем старое приложение, если есть
             pkill -f app.py || true
-            # Запускаем в фоне через nohup
             nohup sudo python3 app.py > app.log 2>&1 &
+            disown
